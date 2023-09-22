@@ -6,17 +6,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class VaccinationApiService {
-  private apiUrl = 'https://imunizacao-es.saude.gov.br/_search';
+  private apiUrl = 'https://lbkjdxopivgjrmduvnzw.supabase.co/rest/v1/vaccination?select=*';
 
   constructor(private http: HttpClient) { }
 
   getVaccinationData(): Observable<any> {
-    const username = 'imunizacao_public';
-    const password = 'qlto5t&7r_@+#Tlstig';
-
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: `Basic ${btoa(`${username}:${password}`)}`,
+      'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxia2pkeG9waXZnanJtZHV2bnp3Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5NTM5NTc3MCwiZXhwIjoyMDEwOTcxNzcwfQ.lD91725w3ITYEgg9WDvriQkRFcT6Ieg4GcLE89RaTiQ',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxia2pkeG9waXZnanJtZHV2bnp3Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5NTM5NTc3MCwiZXhwIjoyMDEwOTcxNzcwfQ.lD91725w3ITYEgg9WDvriQkRFcT6Ieg4GcLE89RaTiQ',
     });
 
     return this.http.get(this.apiUrl, { headers });
