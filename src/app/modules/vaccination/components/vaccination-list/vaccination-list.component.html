@@ -4,7 +4,7 @@
 </mat-form-field>
 
 <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" matSort>
+  <table mat-table [dataSource]="vaccinationData" matSort>
 
     <!-- ApplicationDate Column -->
     <ng-container matColumnDef="applicationDate">
@@ -34,6 +34,19 @@
     <ng-container matColumnDef="fabricator">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Fabricante </th>
       <td mat-cell *matCellDef="let row"> {{row.fabricator}} </td>
+    </ng-container>
+
+     <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Ações </th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-fab extended color="primary">
+          <mat-icon>person_add</mat-icon> Paciente
+        </button>
+        <button mat-fab extended color="primary">
+          <mat-icon>home_health</mat-icon> Estabelecimento
+        </button>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
